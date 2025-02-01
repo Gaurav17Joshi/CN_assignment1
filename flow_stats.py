@@ -41,14 +41,14 @@ with open('fast_captured_packets_info.csv', mode="r") as file:
 
 # Print the flow counts for each IP address
 print("Source IP Flows:")
-print(f"Total Number of Ip address outgoing flows {len(source_flows)}")
+print(f"Total Number of Ip address source flows {len(source_flows)}")
 
 if print_all:
     for ip, count in source_flows.items():
         print(f"{ip}: {count} flows")
 
 print("\nDestination IP Flows:")
-print(f"Total Number of Ip address incoming flows {len(dest_flows)}")
+print(f"Total Number of Ip address destination flows {len(dest_flows)}")
 
 if print_all:
     for ip, count in dest_flows.items():
