@@ -2,71 +2,89 @@
 
 ## Overview
 This assignment involves capturing and analyzing network packets. The task consists of two parts:
-1. **Packet Sniffing** - Capturing real-time network packets using a Python-based sniffer.
-2. **Packet Analysis** - Processing the captured packets from a CSV file and extracting useful insights.
+1. **Packet Sniffing:** - Capturing real-time network packets using a Python-based sniffer.
+2. **Packet Analysis:** - Processing the captured packets from a CSV file and extracting useful insights.
+3. **Capture the Flag:** - Finding the different hints and messages in the data.
 
 ## Part 1: Packet Sniffing
-The first part involves running a packet sniffer that captures network packets in real time and logs relevant details into a CSV file (`captured_packets_info.csv`). The script captures Ethernet, IPv4, IPv6, TCP, UDP, and ICMP packets, extracting useful information such as:
-- Source and Destination MAC Addresses
-- Source and Destination IP Addresses
-- Transport Layer Protocol (TCP/UDP)
-- Source and Destination Ports
-- Packet Size
-- Traffic type detection (HTTP, DNS, SSL/TLS, etc.)
 
 ### Running the Packet Sniffer
 #### Prerequisites:
 - Run the script with **root/sudo privileges** to access raw sockets.
 - Install Python and required libraries (if not already installed):
   ```sh
-  sudo apt install python3
+  sudo apt install python3, pip
+  pip install socket csv struct 
   ```
 
 #### Execution:
 ```sh
-sudo python3 packet_sniffer.py
+sudo python3 fast_sniffer.py
 ```
-The captured packet details will be stored in `captured_packets_info.csv`.
+The captured packet details will be stored in `fast_captured_packets_info.csv`.
 
-## Part 2: Packet Analysis
-This part involves analyzing the captured packet data using Python. The analysis includes:
-1. **Computing network metrics:**
-   - Total data transferred (bytes)
-   - Total packets captured
-   - Minimum, maximum, and average packet size
-   - Histogram of packet sizes
-2. **Finding unique source-destination pairs** (source IP:port → destination IP:port).
-3. **Analyzing traffic flows:**
-   - Dictionary of IP addresses with total outgoing and incoming flows.
-   - Finding the source-destination pair that transferred the most data.
+### Tcp replay:-
 
-### Running the Analysis Scripts
-#### Prerequisites:
-Ensure you have the required libraries installed:
+To run the pcap files, we open a different terminals and run:-
+
+> Note: In all the tcpreplay commands, you will have to use your own network interface (use ifconfig-a to get your network interface) 
+
 ```sh
-pip install pandas matplotlib
+sudo tcpreplay -i enp0s1 -M 10 2.pca
 ```
 
-#### Execution:
-Run the analysis script to process the CSV file and generate insights:
+> Note: Open 2 terminals, run the sniffer code in one first and then the tcpreplay in other. Use contorol+c to terminate the sniffer after the tcpreplay is done.
+
+### Packet Analysis
+
+After this step, the data will be captured in 'fast_captured_packets_info.csv'., and the analysis scripts will be executed.
+
 ```sh
-python3 packet_analysis.py
+pip install matplotlib
 ```
-This will display statistics, generate plots, and provide traffic flow details.
 
-## Expected Output
-- A summary of packet metrics (total bytes, packet count, min/max/avg size)
-- A histogram visualizing packet size distribution
-- A list of unique source-destination pairs
-- Traffic flow statistics per IP address
-- Identification of the most data-intensive communication pair
+For Q1
+- python3 data_stats.py
 
-## Timing Analysis
+For Q2.
+- python3 pair_stats.py
+You can set the 'print_all' flag to true to print the pairs
 
-## Notes
-- The sniffer captures **live network traffic**. Ensure you are aware of security policies before running it.
-- The analysis script expects `captured_packets_info.csv` to be present in the same directory.
-- If using a `.pcap` file instead of live sniffing, you can convert it to CSV using Wireshark or a Python parser.
+For Q3.
+- python3 flow_stats.py
+You can set the 'print_all' flag to true to print the stats (dictionaries)
 
-## Author
-Developed by Gaurav Joshi, Husain Malwat.
+### Timing Analysis
+
+For the timing analysis, we will again, run fast_sniffer.py and tcpreplay in 2 separate terminals and check any packets are missed.
+
+For checking fast Mbps:-
+
+```sh
+sudo tcpreplay -i enp0s1 -M 10 2.pca
+```
+
+For checking fast pps:-
+
+```sh
+sudo tcpreplay -i enp0s1 -M 10 2.pca
+```
+
+The max times are given in the assignmnet sheet.
+
+
+## Part 2: Capture the Flag
+
+For capture the flag, we will run our tcpreplay and 'adv_data_sniff.py' in two different terminals.
+Here, the 'adv_data_sniff.py' will sniff the data, and print out the captured flags.
+
+> Note: Here, we will require to run the sniffer two times. First, it will print the ip address required for Q2, then the second time, it will be able to count the number of times it appears. 
+
+
+## Part 3:-
+ 
+This part did not require any direct coding.
+
+
+## Authors
+Developed by Gaurav Joshi (21110065), Husain Malwat (21110117).
