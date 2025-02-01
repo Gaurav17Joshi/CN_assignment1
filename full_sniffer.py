@@ -6,7 +6,7 @@ import csv
 # Define constants for Ethernet frame
 ETH_P_ALL = 0x0003  # Capture all protocols
 BUFFER_SIZE = 65535
-CSV_FILENAME = "captured_packets_info.csv"  # Output file for logging packets
+CSV_FILENAME = "fast_captured_packets_info.csv"  # Output file for logging packets
 
 # Function to format MAC addresses into human-readable format
 def mac_format(mac):

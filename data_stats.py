@@ -7,7 +7,7 @@ total_packets = 0
 packet_sizes = []
 
 # Read the CSV file and extract the necessary data
-with open('captured_packets_info.csv', mode="r") as file:
+with open('fast_captured_packets_info.csv', mode="r") as file:
     reader = csv.reader(file)
 
     for row in reader:

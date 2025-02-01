@@ -10,7 +10,7 @@ data_transfer = defaultdict(int)
 print_all = False
 
 # Read the CSV file and process the flows
-with open('captured_packets_info.csv', mode="r") as file:
+with open('fast_captured_packets_info.csv', mode="r") as file:
     reader = csv.reader(file)
     
     for row in reader:
