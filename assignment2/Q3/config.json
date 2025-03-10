@@ -1,0 +1,11 @@
+{
+    "file_size": 4096,
+    "transfer_rate": 40,
+    "duration": 120,
+    "scenarios": [
+        { "nagle": true, "delayed_ack": true },
+        { "nagle": true, "delayed_ack": false },
+        { "nagle": false, "delayed_ack": true },
+        { "nagle": false, "delayed_ack": false }
+    ]
+}

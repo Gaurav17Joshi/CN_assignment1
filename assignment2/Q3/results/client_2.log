@@ -1,0 +1,2 @@
+Client connected to 127.0.0.1:5001 (Nagle: False, Delayed ACK: True)
+Client sent 4096 bytes in 103.27 sec. Active transfer duration: 102.27 sec. Log saved to client_log.txt

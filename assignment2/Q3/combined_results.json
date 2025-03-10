@@ -1,0 +1,83 @@
+{
+    "configuration": {
+        "file_size": 4096,
+        "transfer_rate": 40,
+        "duration": 120,
+        "scenarios": [
+            {
+                "nagle": true,
+                "delayed_ack": true
+            },
+            {
+                "nagle": true,
+                "delayed_ack": false
+            },
+            {
+                "nagle": false,
+                "delayed_ack": true
+            },
+            {
+                "nagle": false,
+                "delayed_ack": false
+            }
+        ]
+    },
+    "results": [
+        {
+            "scenario": 0,
+            "config": {
+                "nagle": true,
+                "delayed_ack": true
+            },
+            "metrics": {
+                "throughput_bytes_per_sec": 40.0639883761125,
+                "goodput_bytes_per_sec": 40.0639883761125,
+                "packet_loss_rate": 0.0,
+                "max_packet_size": 40,
+                "active_duration_sec": 102.2864513874054
+            }
+        },
+        {
+            "scenario": 1,
+            "config": {
+                "nagle": true,
+                "delayed_ack": false
+            },
+            "metrics": {
+                "throughput_bytes_per_sec": 40.05261009612059,
+                "goodput_bytes_per_sec": 40.05261009612059,
+                "packet_loss_rate": 0.0,
+                "max_packet_size": 40,
+                "active_duration_sec": 102.26549506187439
+            }
+        },
+        {
+            "scenario": 2,
+            "config": {
+                "nagle": false,
+                "delayed_ack": true
+            },
+            "metrics": {
+                "throughput_bytes_per_sec": 40.05254902739186,
+                "goodput_bytes_per_sec": 40.05254902739186,
+                "packet_loss_rate": 0.0,
+                "max_packet_size": 40,
+                "active_duration_sec": 102.26565098762512
+            }
+        },
+        {
+            "scenario": 3,
+            "config": {
+                "nagle": false,
+                "delayed_ack": false
+            },
+            "metrics": {
+                "throughput_bytes_per_sec": 40.047244322307655,
+                "goodput_bytes_per_sec": 40.047244322307655,
+                "packet_loss_rate": 0.0,
+                "max_packet_size": 40,
+                "active_duration_sec": 102.22919721603394
+            }
+        }
+    ]
+}

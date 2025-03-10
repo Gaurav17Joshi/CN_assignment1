@@ -1,0 +1,8 @@
+Computed Metrics:
+{
+    "throughput_bytes_per_sec": 40.05261009612059,
+    "goodput_bytes_per_sec": 40.05261009612059,
+    "packet_loss_rate": 0.0,
+    "max_packet_size": 40,
+    "active_duration_sec": 102.26549506187439
+}
