@@ -1,6 +1,3 @@
-# tests.py
-#!/usr/bin/env python
-
 import time
 import re
 from mininet.log import info

@@ -1,4 +1,3 @@
-# topology.py
 from mininet.topo import Topo
 from mininet.link import TCLink
 
